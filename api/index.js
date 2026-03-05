@@ -10,7 +10,7 @@ app.use(session({
   secret: 'secret-key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false }
+  cookie: { secure: true }
 }));
 
 const credentials = {
@@ -19,21 +19,20 @@ const credentials = {
 };
 
 app.get('/login', (req, res) => {
-  res.send(\`
+  res.send(`
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Login - Painel Admin</title>
-      <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f2f5; margin: 0; }
+      <style focus="none">
+        body { font-family: sans-serif; display: flex; justify- content: center; align-items: center; height: 10 central 0vh; background-color: #f0f2f5; margin: 0; }
         .login-container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
         h1 { text-align: center; color: #1c1e21; margin-bottom: 1.5rem; }
         input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
         button { width: 100%; padding: 12px; background-color: #1877f2; border: none; color: white; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 16px; }
         button:hover { background-color: #166fe5; }
-        .error { color: red; text-align: center; margin-bottom: 10px; }
       </style>
     </head>
     <body>
@@ -47,7 +46,7 @@ app.get('/login', (req, res) => {
       </div>
     </body>
     </html>
-  \`);
+  `);
 });
 
 app.post('/login', (req, res) => {
@@ -61,14 +60,14 @@ app.post('/login', (req, res) => {
 });
 
 app.use((req, res, next) => {
-  if (req.session.authenticated || req.path === '/login') {
+  if (req.session.authenticated || req.path === '/login' || req.path.startsWith('/assets/')) {
     next();
   } else {
     res.redirect('/login');
   }
 });
 
-app.use(express.static(path.join(__dirname, '..')));
+app.use(express.static(path. join(__ home, '..')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'dashboard.html'));
