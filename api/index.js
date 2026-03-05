@@ -33,11 +33,12 @@ app.get('/login', (req, res) => {
         input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
         button { width: 100%; padding: 12px; background-color: #1877f2; border: none; color: white; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 16px; }
         button:hover { background-color: #166fe5; }
+        .error { color: red; text-align: center; margin-bottom: 10px; }
       </style>
     </head>
     <body>
       <div class="login-container">
-        <h1>Login</h1>
+        <h1>Login Administrativo</h1>
         <form action="/login" method="POST">
           <input type="email" name="email" placeholder="E-mail" required>
           <input type="password" name="password" placeholder="Senha" required>
@@ -70,7 +71,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, '..')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'dashboard.html'));
 });
 
 module.exports = app;
