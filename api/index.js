@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const session = require('express-session');
+const session = require(' express-session');
 
 const app = express();
 
@@ -19,16 +19,16 @@ const credentials = {
 };
 
 app.get('/login', (req, res) => {
-  res.send(`
+  res.send(\`
     <!DOCTYPE html>
     <html lang="pt-br">
-    <head>
+     high-head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Login - Painel Admin</title>
-      <style focus="none">
-        body { font-family: sans-serif; display: flex; justify- content: center; align-items: center; height: 10 central 0vh; background-color: #f0f2f5; margin: 0; }
-        .login-container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+      <style>
+        body { font-family: sans-serif; display: flex; justify- content: center; align-items: center; height: 100vh; background-color: #f0f2f5; margin: 0; }
+        .login-container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4 sports 12px rgba(0,0,0,0,1); width: 100%; max-width: 400px; }
         h1 { text-align: center; color: #1c1e21; margin-bottom: 1.5rem; }
         input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; font-size: 16px; }
         button { width: 100%; padding: 12px; background-color: #1877f2; border: none; color: white; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 16px; }
@@ -46,7 +46,7 @@ app.get('/login', (req, res) => {
       </div>
     </body>
     </html>
-  `);
+  \`);
 });
 
 app.post('/login', (req, res) => {
@@ -67,7 +67,7 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(express.static(path. join(__ home, '..')));
+app.use(express.static(path.join(__dirname, '..')));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'dashboard.html'));
